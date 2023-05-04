@@ -1,5 +1,3 @@
-# First workflow at Devops course
-#flow name
 name: CI
 
 # Trigger
