@@ -62,3 +62,6 @@ jobs:
           scp -r build google-cloud:/home/github/react-app
           ssh google-cloud 'sudo mv /home/github/react-app /app/react-app'
           ssh google-cloud 'sudo systemctl start react-app'
+      
+      - name: Create a new port
+        run: npx serve /app/react-app -p 8081
