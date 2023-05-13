@@ -1,4 +1,4 @@
-# CD workflow
+# CD release workflow
 name: CD
 
 on:
