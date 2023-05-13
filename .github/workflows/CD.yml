@@ -1,4 +1,4 @@
-# CD workflow
+# CD main workflow
 name: CD
 
 on:
