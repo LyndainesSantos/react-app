@@ -1,0 +1,42 @@
+name: CI
+
+# Trigger
+on:
+# Triggers the workflow on push or pull request events, but only for the "release" branch
+  push:
+    branches: [ "release" ]
+  pull_request:
+    branches: [ "release" ]
+
+# Allows you run the workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+
+  CI:
+# Where the work'll be executed
+    runs-on: ubuntu-latest
+
+    steps:
+# Check-out
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js 16.x
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16.x
+    
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run the tests
+        run: npm run test -- --coverage
+        env:
+          CI: true
+          
+#      - name: SonarCloud Scan
+#        uses: SonarSource/sonarcloud-github-action@master
+#        env:
+#          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
